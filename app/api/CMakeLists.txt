@@ -2,6 +2,7 @@ project(sonic-pi-api VERSION 0.0.0.1)
 
 set(API_ROOT ${CMAKE_CURRENT_LIST_DIR})
 
+
 set(API_SRC
     ${API_ROOT}/src/sonicpi_api.cpp
     ${API_ROOT}/src/string_utils.cpp
@@ -100,7 +101,6 @@ find_package(crossguid CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
         stdc++fs
-        rt
     PRIVATE
         crossguid
     )

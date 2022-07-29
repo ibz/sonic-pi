@@ -73,7 +73,7 @@ case $host in
   *-*-linux*)
     CXXFLAGS="$CXXFLAGS -pthread"
     LDFLAGS="$LDFLAGS -pthread"
-    LIBS="$LIBS -lrt"
+    LIBS="$LIBS"
     ;;
   *-*-solaris*)
     if test "$GXX" = yes; then

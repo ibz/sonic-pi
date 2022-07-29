@@ -637,6 +637,8 @@ module SonicPi
           :macos
         when /.*mingw.*/
           :windows
+        when /.*openbsd.*/
+          :openbsd
         else
           raise "Unsupported platform #{RUBY_PLATFORM}"
         end
@@ -782,6 +784,7 @@ module SonicPi
       end
 
       def boot
+        #@cmd = "/usr/local/bin/scsynth"
         Util.log "Process Booter - booting #{@cmd} with args #{@args.inspect}"
         Util.log "#{@cmd} #{@args.join(' ')}"
         @stdin, @stdout_and_err, @wait_thr = Open3.popen2e @cmd, *@args

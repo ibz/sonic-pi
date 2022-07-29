@@ -241,6 +241,8 @@ module SonicPi
 
     def self.scsynth_path
       case os
+      when :openbsd
+        "scsynth"
       when :linux
         "scsynth"
       when :macos
@@ -268,6 +270,8 @@ module SonicPi
         :linux
       when /.*darwin.*/
         :macos
+      when /.*openbsd.*/
+        :openbsd
       when /.*mingw.*/
         :windows
       else

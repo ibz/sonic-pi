@@ -4,8 +4,6 @@ include ../../build/makefile.inc
 
 ifeq ($(OS),Windows_NT)
 	PLATFORM_OPTS = -static
-else
-	PLATFORM_OPTS = -lrt
 endif
 
 OPTS = -Wno-int-to-pointer-cast -pthread $(PLATFORM_OPTS) -O3 -g

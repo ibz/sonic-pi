@@ -54,6 +54,7 @@ elseif(WITH_QT_GUI_WEBENGINE)
   find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network OpenGL PrintSupport Xml Svg LinguistTools WebEngineWidgets REQUIRED)
   add_compile_definitions(WITH_WEBENGINE)
 else()
+  set(Qt5_DIR /usr/local/lib/qt5/cmake/Qt5/)
   find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network OpenGL PrintSupport Xml Svg LinguistTools REQUIRED)
 endif()
 
@@ -334,9 +335,6 @@ if(WIN32)
     target_compile_options(${APP_NAME} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/wd4005 /W3 /D_CRT_SECURE_NO_WARNINGS /D_WINSOCK_DEPRECATED_NO_WARNINGS /DBOOST_DATE_TIME_NO_LIB>)
     target_compile_options(${APP_NAME} PRIVATE "$<$<CONFIG:DEBUG>:-DTRACY_ENABLE=1>")
     target_compile_options(${APP_NAME} PRIVATE "$<$<CONFIG:RELWITHDEBINFO>:-DTRACY_ENABLE=1>")
-elseif(${CMAKE_SYSTEM_NAME} MATCHES Linux)
-    # Link librt
-    target_link_libraries(${APP_NAME} PRIVATE rt)
 endif()
 
 # Deploy Qt binaries to the output on windows, and copy the CRT to the release folder

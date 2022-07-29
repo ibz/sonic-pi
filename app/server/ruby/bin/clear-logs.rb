@@ -61,7 +61,7 @@ num_sessions_to_store = 10
 history_dirs = Dir.glob("#{SonicPi::Paths.log_history_path}/*")
 
 begin
-  history_dirs = history_dirs.sort {|d| File.birthtime(d) }
+  history_dirs = history_dirs.sort {|d| File.ctime(d) }
 rescue
   nil
 end
