@@ -54,6 +54,7 @@ elseif(WITH_QT_GUI_WEBENGINE)
   find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network OpenGL PrintSupport Xml Svg LinguistTools WebEngineWidgets REQUIRED)
   add_compile_definitions(WITH_WEBENGINE)
 else()
+  set(Qt5_DIR /usr/local/lib/qt5/cmake/Qt5/)
   find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network OpenGL PrintSupport Xml Svg LinguistTools REQUIRED)
 endif()
 

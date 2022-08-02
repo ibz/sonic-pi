@@ -9,6 +9,8 @@ if(WIN32)
   set(ERLANG_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../prebuilt/windows/headers/erlang CACHE STRING "Path to the Erlang header files")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES Darwin) # macOS
   set(ERLANG_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../prebuilt/macos/headers/erlang CACHE STRING "Path to the Erlang header files")
+elseif(OPENBSD)
+    set(ERLANG_INCLUDE_PATH "/usr/local/lib/erlang21/usr/include/" CACHE PATH "Path to erlang includes")
 else()
   execute_process(
     COMMAND erl -noshell -eval "io:format(\"~s~n\", [filename:join([lists:concat([code:root_dir(), \"/erts-\", erlang:system_info(version)]), \"include\"])]), init:stop(0)."
@@ -36,18 +38,6 @@ ExternalProject_Add(sp_midi
         -DERLANG_INCLUDE_PATH=${ERLANG_INCLUDE_PATH}
         -DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}
         -DUSE_SYSTEM_RTMIDI=${USE_SYSTEM_LIBS}
-    BUILD_COMMAND ${CMAKE_COMMAND} --build . --config Release
-    )
-
-ExternalProject_Add(sp_link
-    PREFIX sp_link-prefix
-    SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/sp_link
-    INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../server/beam/tau/priv
-    CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_SOURCE_DIR}/../server/beam/tau/priv
-        -DERLANG_INCLUDE_PATH=${ERLANG_INCLUDE_PATH}
-        -DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}
-
     BUILD_COMMAND ${CMAKE_COMMAND} --build . --config Release
     )
 

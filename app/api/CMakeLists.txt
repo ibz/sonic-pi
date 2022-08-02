@@ -43,10 +43,19 @@ add_library(SonicPi::API ALIAS ${PROJECT_NAME})
 # For finding home path, etc.
 find_package(platform_folders CONFIG REQUIRED)
 
+set(reproc_DIR
+	"/home/ibz/src/sonic-pi/app/vcpkg/installed/x64-openbsd/share/reproc/"
+	#	"/home/ibz/src/sonic-pi/app/vcpkg/buildtrees/reproc/x64-openbsd-rel/reproc/"
+	)
+set(reproc++_DIR
+	"/home/ibz/src/sonic-pi/app/vcpkg/installed/x64-openbsd/share/reproc++/"
+	)
+
 # For running child processes
 find_package(reproc CONFIG REQUIRED)
 find_package(reproc++ CONFIG REQUIRED)
 
+set(unofficial-kissfft_DIR "/home/ibz/src/sonic-pi/app/vcpkg/installed/x64-openbsd/share/unofficial-kissfft/")
 if (USE_SYSTEM_LIBS)
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(kissfft REQUIRED IMPORTED_TARGET kissfft-float)

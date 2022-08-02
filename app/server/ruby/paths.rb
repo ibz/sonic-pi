@@ -243,6 +243,8 @@ module SonicPi
       case os
       when :linux
         "scsynth"
+      when :openbsd
+        "scsynth"
       when :macos
         path = "#{native_path}/scsynth"
         raise "Unable to find SuperCollider. Is it installed? I looked here: #{path.inspect}" unless File.exist?(path)
@@ -266,6 +268,8 @@ module SonicPi
       case RUBY_PLATFORM
       when /.*linux.*/
         :linux
+      when /.*openbsd.*/
+        :openbsd
       when /.*darwin.*/
         :macos
       when /.*mingw.*/

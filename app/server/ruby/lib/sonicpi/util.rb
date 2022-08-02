@@ -27,6 +27,8 @@ module SonicPi
       end
     when /.*darwin.*/
       @@os = :osx
+    when /.*openbsd.*/
+      @@od = :openbsd
     when /.*mingw.*/
       @@os = :windows
     else

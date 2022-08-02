@@ -12,6 +12,8 @@ set(APP_ROOT ${CMAKE_CURRENT_LIST_DIR})
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/demo_common.cmake)
 
+set(gl3w_DIR "/home/ibz/src/sonic-pi/app/vcpkg/installed/x64-openbsd/share/gl3w/")
+set(fmt_DIR "/home/ibz/src/sonic-pi/app/vcpkg/installed/x64-openbsd/share/fmt/")
 find_package(gl3w CONFIG REQUIRED)
 find_package(SDL2 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
@@ -110,7 +112,7 @@ if (USE_SYSTEM_LIBS)
 else()
     target_link_libraries (${APP_NAME}
 	PRIVATE
-	unofficial::gl3w::gl3w
+        unofficial::gl3w::gl3w
 	SDL2::SDL2main
 	SDL2::SDL2-static
 	)
